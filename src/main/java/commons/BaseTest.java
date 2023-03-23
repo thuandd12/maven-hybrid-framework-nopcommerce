@@ -67,10 +67,7 @@ public class BaseTest {
 		driver.get(GlobleConstaints.PORTAL_PAGE_URL);
 		return driver;
 	}
-	protected int generateFakeNumber() {
-		  Random rand = new Random();
-		  return rand.nextInt(9999);
-	  }
+	
 	protected WebDriver getBrowserDriver(String browserName, String appURl ) {
 		if (browserName.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
@@ -199,33 +196,6 @@ public class BaseTest {
 		}
 	}
 
-	protected String getCurrentDate() {
-		DateTime nowUTC = new DateTime();
-		int day = nowUTC.getDayOfMonth();
-		if (day < 10) {
-			String dayValue = "0" + day;
-			return dayValue;
-		}
-		return String.valueOf(day);
-	}
-
-	protected String getCurrentMonth() {
-		DateTime now = new DateTime();
-		int month = now.getMonthOfYear();
-		if (month < 10) {
-			String monthValue = "0" + month;
-			return monthValue;
-		}
-		return String.valueOf(month);
-	}
-
-	protected String getCurrentYear() {
-		DateTime now = new DateTime();
-		return String.valueOf(now.getYear());
-	}
-
-	protected String getCurrentDay() {
-		return getCurrentYear() + "/" + getCurrentMonth() + "/" + getCurrentDate();
-	}
+	
 
 }

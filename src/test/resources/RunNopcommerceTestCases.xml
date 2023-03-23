@@ -8,14 +8,22 @@
   <test name="Run on Chrome">
   <parameter name="browser" value="chrome" />
     <classes>
-      <class name="com.nopcommerce.user.User_01_Register"/>
+      <class name="com.nopcommerce.user.User_03_My_Account"/>
     </classes>
+
+
+<!-- <packages> -->
+<!-- 		<package name="com.nopcommerce.user" /> -->
+<!-- </packages> --> -->
+
+
   </test> 
 <!--   <test name="Run on Firefox"> -->
 <!--   <parameter name="browser" value="firefox" /> -->
 <!--     <classes> -->
-<!--       <class name="com.nopcommerce.user.User_01_Register"/> -->
+<!--       <class name="com.nopcommerce.user.User_02_Login"/> -->
 <!--     </classes> -->
 <!--   </test>  -->
+
   
 </suite> 

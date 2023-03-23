@@ -146,22 +146,30 @@ public class BasePage {
 	public String getElementText(WebDriver driver,String locatorType) {
 		return getWebElement(driver, locatorType).getText();
 	}
-	public String getElementText(WebDriver driver,String locatorType,String... dynamicValues) {
+	public String getElementText(WebDriver driver,String locatorType, String... dynamicValues) {
 		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getText();
 	}
-	public void selectItemInDefaultDropdown(WebDriver driver,String locatorType,String textItem) {
+	public void selectItemInDefaultDropdown(WebDriver driver,String locatorType, String textItem) {
 		Select select = new Select(getWebElement(driver, locatorType));
 		select.selectByVisibleText(textItem);
 	}
-	public void selectItemInDefaultDropdown(WebDriver driver,String locatorType,String textItem,String... dynamicValues) {
+	public void selectItemInDefaultDropdown(WebDriver driver,String locatorType,String textItem, String... dynamicValues) {
 		Select select = new Select(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
 		select.selectByVisibleText(textItem);
 	}
-	public String getSelectedItemDefaulDropdown(WebDriver driver,String locatorType) {
+	public String getFirstSelectOptionInDropDownList(WebDriver driver,String locatorType) {
 		Select select = new Select(getWebElement(driver, locatorType));
 		return select.getFirstSelectedOption().getText();
 	}
-	public boolean isDropdownMultible(WebDriver driver,String locatorType) {
+	public String getFirstSelectOptionInDropDownList(WebDriver driver,String locatorType, String... dynamicValues) {
+		Select select = new Select(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
+		return select.getFirstSelectedOption().getText();
+	}
+	public String getSelectedItemDefaulDropdown(WebDriver driver, String locatorType) {
+		Select select = new Select(getWebElement(driver, locatorType));
+		return select.getFirstSelectedOption().getText();
+	}
+	public boolean isDropdownMultible(WebDriver driver, String locatorType) {
 		Select select = new Select(getWebElement(driver, locatorType));
 		return select.isMultiple();
 	}
@@ -190,6 +198,10 @@ public class BasePage {
 	public String getElementAttribute(WebDriver driver,String locatorType,String attributeName) {
 		return getWebElement(driver, locatorType).getAttribute(attributeName);
 	}
+	public String getElementAttribute(WebDriver driver,String locatorType,String attributeName,String... dynamicValues) {
+		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).getAttribute(attributeName);
+	}
+	
 	public String getElementCssValue(WebDriver driver,String locatorType,String propertyName) {
 		return getWebElement(driver, locatorType).getCssValue(propertyName);
 	}
@@ -403,8 +415,70 @@ public class BasePage {
 		waitForElementClickable(driver, commonsPageUIs.NAME_TEXT_LINK, inputValue);
 		clickToElement(driver, commonsPageUIs.NAME_TEXT_LINK, inputValue);
 	}
+	/** Click to button by text
+	 * @param driver
+	 * @param inputValue
+	 */
 	public void clickToButtonByText(WebDriver driver, String inputValue) {
 		waitForElementClickable(driver, commonsPageUIs.NAME_TEXT_BUTTON, inputValue);
 		clickToElement(driver, commonsPageUIs.NAME_TEXT_BUTTON, inputValue);
 	}
+	/** Sendkey to text box by id
+	 * @param driver
+	 * @param inputValue
+	 * @param locatorType
+	 * @return 
+	 */
+	public void sendKeyToTextbox (WebDriver driver, String inputValue, String locatorType) {
+		waitForElementVisible(driver, commonsPageUIs.TEXT_BOX, locatorType);
+		sendkeyToElement(driver, commonsPageUIs.TEXT_BOX, inputValue, locatorType);
+	}
+	/** Get text warning massage by id
+	 * @param driver
+	 * @param inputValue
+	 * @return
+	 */
+	public String getTextWarningMassage(WebDriver driver, String inputValue) {
+		waitForElementVisible(driver, commonsPageUIs.ERROR_MESSAGE_DISPLAYED, inputValue);
+		return getElementText(driver, commonsPageUIs.ERROR_MESSAGE_DISPLAYED, inputValue);
+	}
+	/** Check link is displayed by text
+	 * @param driver
+	 * @param inputValue
+	 * @return
+	 */
+	public boolean isLinkDisplayed(WebDriver driver, String inputValue) {
+		waitForElementVisible(driver, commonsPageUIs.NAME_TEXT_LINK, inputValue);
+		return isElementDisplay(driver, commonsPageUIs.NAME_TEXT_LINK, inputValue);
+	}
+	/** Select in drop down list with by name
+	 * @param driver
+	 * @param inputValue
+	 * @param dynamicLocator
+	 */
+	public void selectInDropDownList(WebDriver driver,String inputValue,String dynamicLocator) {
+		waitForElementClickable(driver, commonsPageUIs.SELECT_DROPDOWN_LIST, dynamicLocator);
+		selectItemInDefaultDropdown(driver, commonsPageUIs.SELECT_DROPDOWN_LIST, inputValue, dynamicLocator);
+	}
+	/** Get first select option in dropdown list by name
+	 * @param driver
+	 * @param inputValue
+	 * @return
+	 */
+	public String getTextInDropdownListFirstSelected(WebDriver driver, String inputValue) {
+		waitForElementVisible(driver, commonsPageUIs.SELECT_DROPDOWN_LIST, inputValue);
+		return getFirstSelectOptionInDropDownList(driver, commonsPageUIs.SELECT_DROPDOWN_LIST, inputValue);
+	}
+	/** Get value textbox by id
+	 * @param driver
+	 * @param inputValue
+	 * @param dynamicLocator
+	 * @return
+	 */
+	public String getValueTextbox(WebDriver driver,String inputValue,String dynamicLocator) {
+		waitForElementVisible(driver, commonsPageUIs.TEXT_BOX, dynamicLocator);
+		return getElementAttribute(driver, commonsPageUIs.TEXT_BOX, inputValue, dynamicLocator);
+		
+	}
+
 }

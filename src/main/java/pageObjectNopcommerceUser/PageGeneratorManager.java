@@ -9,5 +9,11 @@ public class PageGeneratorManager {
 	public static UserRegisterPageObject getRegisterPage(WebDriver driver) {
 		return new UserRegisterPageObject(driver);
 	}
+	public static UserLoginPageObject getLoginPage(WebDriver driver) {
+		return new UserLoginPageObject(driver);
+	}
+	public static UserCustomerInfoPageObject getCustomerInfoPage(WebDriver driver) {
+		return new UserCustomerInfoPageObject(driver);
+	}
 
 }
