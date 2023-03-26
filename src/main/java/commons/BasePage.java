@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageUIs.Nopcommerce.User.UserCustomerInfoPageUIs;
 import pageUIs.commons.commonsPageUIs;
 
 
@@ -479,6 +480,61 @@ public class BasePage {
 		waitForElementVisible(driver, commonsPageUIs.TEXT_BOX, dynamicLocator);
 		return getElementAttribute(driver, commonsPageUIs.TEXT_BOX, inputValue, dynamicLocator);
 		
+	}
+	/** Get text updated success message
+	 * @param driver
+	 * @return
+	 */
+	public String getTextUpdatedSuccessMessage(WebDriver driver) {
+		waitForElementVisible(driver, commonsPageUIs.UPDATED_SUCCESS_MESSAGE);
+		return getElementText(driver, commonsPageUIs.UPDATED_SUCCESS_MESSAGE);
+	}
+	/** Get text of name in formation by class
+	 * @param driver
+	 * @param inputValue
+	 * @return
+	 */
+	public String getTextOfNameInfomation(WebDriver driver,String inputValue) {
+		waitForElementVisible(driver, commonsPageUIs.NAME_INFOMATIONS, inputValue);
+		return getElementText(driver, commonsPageUIs.NAME_INFOMATIONS, inputValue);
+	}
+	/** Click to radio button by aria-label
+	 * @param driver
+	 * @param inputValue
+	 */
+	public void clickToRadiOButton(WebDriver driver,String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.RADIO_BUTTON, inputValue);
+		checkToDefaultCheckBoxRadio(driver, commonsPageUIs.RADIO_BUTTON, inputValue);
+	}
+	/** Check name product is displayed by text
+	 * @param driver
+	 * @param inputValue
+	 * @return
+	 */
+	public boolean isNameProductDisplayed(WebDriver driver,String inputValue) {
+		waitForElementVisible(driver, commonsPageUIs.NAME_TEXT_LINK, inputValue);
+		return isElementDisplay(driver, commonsPageUIs.NAME_TEXT_LINK, inputValue);
+	} 
+	/** Get text element in information card by class
+	 * @param driver
+	 * @param inputValue
+	 * @return
+	 */
+	public String getTextInformationCard(WebDriver driver,String inputValue) {
+		waitForElementVisible(driver, commonsPageUIs.INFORMATION_CARD, inputValue);
+		return getElementText(driver, commonsPageUIs.INFORMATION_CARD, inputValue);
+	}
+	public void openHomePageUrl(WebDriver driver) {
+		waitForElementClickable(driver, commonsPageUIs.HOME_PAGE_IMG);
+		clickToElement(driver, commonsPageUIs.HOME_PAGE_IMG);
+	}
+	/** Click to check box by id
+	 * @param driver
+	 * @param inputValue
+	 */
+	public void clickToCheckbox(WebDriver driver,String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.CHECKBOX, inputValue);
+		checkToDefaultCheckBoxRadio(driver, commonsPageUIs.CHECKBOX, inputValue);
 	}
 
 }

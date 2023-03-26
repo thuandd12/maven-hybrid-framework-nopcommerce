@@ -1,5 +1,10 @@
 package utilities;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
@@ -55,10 +60,10 @@ public class DataHelper {
 	public String getCurrentMonth() {
 		DateTime now = new DateTime();
 		int month = now.getMonthOfYear();
-		if (month < 10) {
-			String monthValue = "0" + month;
-			return monthValue;
-		}
+//		if (month < 10) {
+//			String monthValue = "0" + month;
+//			return monthValue;
+//		}
 		return String.valueOf(month);
 	}
 
@@ -68,7 +73,18 @@ public class DataHelper {
 	}
 
 	public String getCurrentDay() {
-		return getCurrentYear() + "/" + getCurrentMonth() + "/" + getCurrentDate();
+		return getCurrentMonth() + "/" + getCurrentDate() + "/" + getCurrentYear();
+	}
+	public String getCurrentTime() {
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		 Date date = new Date();
+		return String.valueOf(dateFormat.format(date));
+	}
+	public String getCurrentHourAndMinute() {
+		Calendar.getInstance();
+		 String.valueOf(LocalDateTime.now().getHour());
+		 String.valueOf(LocalDateTime.now().getMinute());
+		 return String.valueOf(LocalDateTime.now().getHour()) + ":" + String.valueOf(LocalDateTime.now().getMinute());
 	}
 
 }

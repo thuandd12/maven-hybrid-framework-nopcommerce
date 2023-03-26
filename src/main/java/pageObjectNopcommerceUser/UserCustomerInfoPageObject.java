@@ -18,14 +18,4 @@ public class UserCustomerInfoPageObject extends BasePage {
 		waitForElementClickable(driver, UserCustomerInfoPageUIs.BUTTON_RADIO_BUTTON, inputValue);
 		checkToDefaultCheckBoxRadio(driver, UserCustomerInfoPageUIs.BUTTON_RADIO_BUTTON, inputValue);
 	}
-
-	/** Get text updated success message
-	 * @param driver
-	 * @return
-	 */
-	public String getTextUpdatedSuccessMessage(WebDriver driver) {
-		waitForElementVisible(driver, UserCustomerInfoPageUIs.UPDATED_SUCCESS_MESSAGE);
-		return getElementText(driver, UserCustomerInfoPageUIs.UPDATED_SUCCESS_MESSAGE);
-	}
-	
 }
