@@ -1,12 +1,13 @@
 package commons;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -18,8 +19,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import pageUIs.Nopcommerce.User.UserCustomerInfoPageUIs;
+import pageUIs.Nopcommerce.User.UserHomePageUIs;
 import pageUIs.commons.commonsPageUIs;
+
 
 
 
@@ -194,7 +196,7 @@ public class BasePage {
 				item.click();
 				break;
 			}
-		}		
+		}
 	}
 	public String getElementAttribute(WebDriver driver,String locatorType,String attributeName) {
 		return getWebElement(driver, locatorType).getAttribute(attributeName);
@@ -326,6 +328,10 @@ public class BasePage {
 	public void clickToElementByJS(WebDriver driver,String locatorType) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		jsExecutor.executeScript("arguments[0].click();", getWebElement(driver, locatorType));
+	}
+	public void clickToElementByJS(WebDriver driver,String locatorType,String... dynamicValues) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("arguments[0].click();", getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)));
 	}
 
 	public void scrollToElement(WebDriver driver,String locatorType) {
@@ -502,9 +508,22 @@ public class BasePage {
 	 * @param driver
 	 * @param inputValue
 	 */
-	public void clickToRadiOButton(WebDriver driver,String inputValue) {
-		waitForElementClickable(driver, commonsPageUIs.RADIO_BUTTON, inputValue);
-		checkToDefaultCheckBoxRadio(driver, commonsPageUIs.RADIO_BUTTON, inputValue);
+	public void clickToRadiOButtonByAriaLabel(WebDriver driver,String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.RADIO_BUTTON_BY_ARIA_LABEL, inputValue);
+		checkToDefaultCheckBoxRadio(driver, commonsPageUIs.RADIO_BUTTON_BY_ARIA_LABEL, inputValue);
+	}
+	/** Click to radio button by id
+	 * @param driver
+	 * @param inputValue
+	 */
+	public void clickToRadiOButtonByID(WebDriver driver,String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.RADIO_BUTTON_BY_ID, inputValue);
+		checkToDefaultCheckBoxRadio(driver, commonsPageUIs.RADIO_BUTTON_BY_ID, inputValue);
+	}
+	
+	public void clickToRadiOButtonByIDUnCheck(WebDriver driver,String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.RADIO_BUTTON_BY_ID, inputValue);
+		unCheckToDefaultCheckBox(driver, commonsPageUIs.RADIO_BUTTON_BY_ID, inputValue);
 	}
 	/** Check name product is displayed by text
 	 * @param driver
@@ -536,5 +555,107 @@ public class BasePage {
 		waitForElementClickable(driver, commonsPageUIs.CHECKBOX, inputValue);
 		checkToDefaultCheckBoxRadio(driver, commonsPageUIs.CHECKBOX, inputValue);
 	}
+	public boolean isProducNameSortByAscending(WebDriver driver) {
+		ArrayList<String> productName = new ArrayList<String>();
+		List<WebElement> productNameList = getListWebElement(driver, commonsPageUIs.NAME_PRODUCTS);
+		for (WebElement product : productNameList) {
+			productName.add(product.getText());
+			
+		}
+		ArrayList<String> nameProductsNew = new ArrayList<String>();
+		for (String product : productName) {
+			nameProductsNew.add(product);
+		}
+		Collections.sort(nameProductsNew);
+		return nameProductsNew.equals(productName);
+	}
+
+	public boolean isProducNameSortByDescending(WebDriver driver) {
+		ArrayList<String> productName = new ArrayList<String>();
+		List<WebElement> productNameList = getListWebElement(driver, commonsPageUIs.NAME_PRODUCTS);
+		for (WebElement product : productNameList) {
+			productName.add(product.getText());
+		}
+		
+		ArrayList<String> productNameNew = new ArrayList<String>();
+		for (String product : productName) {
+			productNameNew.add(product);
+		}
+		Collections.sort(productNameNew);
+		//Collections.reverse(productNameNew);
+		
+		return productNameNew.equals(productName);
+	}
+
+	public boolean isProducPriceSortByAscending(WebDriver driver) {
+		ArrayList<Float> productPrice = new ArrayList<Float>();
+		List<WebElement> productPriceList = getListWebElement(driver, commonsPageUIs.PRICE_PRODUCTS);
+		for (WebElement product : productPriceList) {
+			productPrice.add(Float.parseFloat(product.getText().replace("$", "")));
+		}
+		ArrayList<Float> nameProductsNew = new ArrayList<Float>();
+		for (Float product : productPrice) {
+			nameProductsNew.add(product);
+			
+		}
+
+		Collections.sort(nameProductsNew);
+
+		return nameProductsNew.equals(productPrice);
+	}
+
+	public boolean isProducPriceSortByDscending(WebDriver driver) {
+		ArrayList<Float> productPrice = new ArrayList<Float>();
+		List<WebElement> productPriceList = getListWebElement(driver, commonsPageUIs.PRICE_PRODUCTS);
+		for (WebElement product : productPriceList) {
+			productPrice.add(Float.parseFloat(product.getText().replace("$", "")));
+		}
+		ArrayList<Float> nameProductsNew = new ArrayList<Float>();
+		for (Float product : productPrice) {
+			nameProductsNew.add(product);
+		}
+
+		Collections.sort(nameProductsNew);
+		Collections.reverse(nameProductsNew);
+		
+		return nameProductsNew.equals(productPrice);
+	}
+	public void clickToIcon(WebDriver driver, String nameProduct, String nameIcon) {
+		waitForElementClickable(driver, commonsPageUIs.USER_ICON, nameProduct, nameIcon);
+		clickToElement(driver, commonsPageUIs.USER_ICON, nameProduct, nameIcon);
+	}
+	/** Click to icon in admin page by class
+	 * @param driver
+	 * @param inputValue
+	 */
+	public void clickToIconInAdminPage(WebDriver driver, String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.ADMIN_ICON, inputValue);
+		clickToElement(driver, commonsPageUIs.ADMIN_ICON, inputValue);
+	}
+	/** Click to menu by text
+	 * @param driver
+	 * @param inputValue
+	 */
+	public void clickToMenuInAdminPage(WebDriver driver, String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.ADMIN_MENU, inputValue);
+		clickToElement(driver, commonsPageUIs.ADMIN_MENU, inputValue);
+	}
+	public void openHomePageInAdminPage(WebDriver driver) {
+		waitForElementClickable(driver, commonsPageUIs.ADMIN_HOME_PAGE);
+		clickToElement(driver, commonsPageUIs.ADMIN_HOME_PAGE);
+	}
+	/** Click to button by id
+	 * @param driver
+	 * @param inputValue
+	 */
+	public void clickToButtonInAdminPage(WebDriver driver, String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.ADMIN_BUTTON, inputValue);
+		clickToElement(driver, commonsPageUIs.ADMIN_BUTTON, inputValue);
+	}
+	public void clickToButtonInAdminPageByClass(WebDriver driver, String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.ADMIN_BUTTON_BY_CLASS, inputValue);
+		clickToElement(driver, commonsPageUIs.ADMIN_BUTTON_BY_CLASS, inputValue);
+	}
+
 
 }

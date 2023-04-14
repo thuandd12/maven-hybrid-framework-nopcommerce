@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="nopcommerce">
+<listeners>
+<listener class-name="commons.MethodListener"></listener>
+</listeners>
+<parameter name ="url" value ="https://admin-demo.nopcommerce.com/admin/"/>
+
+  <test name="Run on Chrome">
+  <parameter name="browser" value="chrome" />
+    <classes>
+      <class name="com.nopcommerce.admin.Admin_02_Customer"/>
+    </classes>
+  </test> 
+
+  
+</suite> 

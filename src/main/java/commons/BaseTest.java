@@ -1,12 +1,10 @@
 package commons;
 
 import java.io.IOException;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,7 +18,7 @@ import org.testng.Reporter;
 import exception.BrownserNotSupport;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class BaseTest {
+public class BaseTest  {
 	private WebDriver driver;
 	protected final Log log;
 	protected BaseTest() {
@@ -39,8 +37,6 @@ public class BaseTest {
 			driver = new ChromeDriver();
 		}else if(browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();;
-			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,GlobleConstaints.PROJECT_PATH + "\\brownserLogs\\Firefoxlog.log");
 			driver = new FirefoxDriver();
 		}else if (browserName.equals("edge")) {
 			WebDriverManager.edgedriver().setup();
@@ -75,9 +71,7 @@ public class BaseTest {
 			System.setProperty("webdriver.chrome.silentOutput", "true");
 			driver = new ChromeDriver();
 		}else if(browserName.equals("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE, "true");
-			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,GlobleConstaints.PROJECT_PATH + "\\brownserLogs\\Firefoxlog.log");
+			WebDriverManager.firefoxdriver().setup();;
 			driver = new FirefoxDriver();
 		}else if (browserName.equals("edge")) {
 			WebDriverManager.edgedriver().setup();

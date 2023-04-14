@@ -290,7 +290,7 @@ public class User_03_My_Account extends BaseTest {
 		userNotebooksPage.sendKeyToReviewTextTextbox(driver,DataMyProductReviews.REVIEW_TEXT);
 		
 		log.info("Case_04_My_Product_Reviews - Step 06: Click to 'Good' radio button");
-		userNotebooksPage.clickToRadiOButton(driver, "Good");
+		userNotebooksPage.clickToRadiOButtonByAriaLabel(driver, "Good");
 		
 		log.info("Case_04_My_Product_Reviews - Step 07: Click to 'SUBMIT REVIEW' button");
 		userNotebooksPage.clickToButtonByText(driver, "Submit review");

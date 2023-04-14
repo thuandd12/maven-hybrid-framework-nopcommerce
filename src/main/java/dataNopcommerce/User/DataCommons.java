@@ -78,6 +78,62 @@ public class DataCommons {
 		public static final String INCORRECT_MANUFATURER = "HP";
 		public static final String CORRECT_MANUFATURER = "Apple";
 	}
+	public static class DataNotebooks {
+		public static final String SORT_NAME_A_TO_Z = "Name: A to Z";
+		public static final String SORT_NAME_Z_TO_A = "Name: Z to A";
+		public static final String SORT_PRICE_LOW_TO_HIGH = "Price: Low to High";
+		public static final String SORT_PRICE_HIGH_TO_LOW = "Price: High to Low";
+		
+	}
 	
+	public static class DataWishlistCompareRecentView {
+		public static final String FIRSTNAME = data.getFirstName();
+		public static final String LASTNAME = data.getLastName();
+		public static final String EMAIL_ADDRESS = data.getEmail();
+		public static final String PASSWORD = "123123";
+	}
+	public static class DataOrder {
+		public static final String FIRSTNAME = data.getFirstName();
+		public static final String LASTNAME = data.getLastName();
+		public static final String EMAIL_ADDRESS = data.getEmail();
+		public static final String PASSWORD = "123123";
+		public static final String PROCESSOR = "2.2 GHz Intel Pentium Dual-Core E2200";
+		public static final String RAM = "4GB [+$20.00]";
+		public static final String OS = "Vista Premium [+$60.00]";
+		public static final String MYCROSORT_OFFICE = "Microsoft Office [+$50.00]";
+		public static final String ACROBAT_READER = "Acrobat Reader [+$10.00]";
+		public static final String TOTAL_COMMANDER = "Total Commander [+$5.00]";
+		public static final String HDD = "400 GB [+$100.00]";
+		public static final String EDIT_PROCESSOR = "2.5 GHz Intel Pentium Dual-Core E2200 [+$15.00]";
+		public static final String EDIT_RAM = "8GB [+$60.00]";
+		public static final String EDIT_OS = "Vista Home [+$50.00]";
+		public static final String EDIT_HDD = "320 GB";
+		public static final String QUANTITY = "2";
+		public static final String QUANTITY_UPDATE = "5";
+		public static final String TOTAL_PRICE_UPDATE = "$2,500.00";
+		public static final String COUNTRY = "Viet Nam";
+		public static final String CITY = "Ha Noi";
+		public static final String ADDRESS1 = "123 Giai Phong";
+		public static final String PHONE_NUMBER = "0123456789";
+		public static final String ZIP = "550000";
+	}
+	public static class DataAdminSearch {
+		public static final String PRODUCT_NAME = "Lenovo IdeaCentre 600 All-in-One PC";
+		public static final String CATEGORY = "Computers";
+		public static final String CATEGORY1 = "Computers >> Desktops";
+		public static final String CATEGORY2 = "All";
+		public static final String MANUFACTURER = "Apple";
+		public static final String SKU = "LE_IC_600";
+	}
+	public static class DataAdminCustomer {
+		public static final String FIRSTNAME = data.getFirstName();
+		public static final String LASTNAME = data.getLastName();
+		public static final String EMAIL_ADDRESS = data.getEmail();
+		public static final String PASSWORD = "123123";
+		public static final String COMPANY_NAME = data.getCompanyName();
+		public static final String ADMIN_COMMENT = "Add new customer (gest)";
+		public static final String DATE_OF_BIRTH = "09/01/1999";
+		public static final String CUSTOMER_ROLES = "Guests";
+	}
 
 }
