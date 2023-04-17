@@ -52,5 +52,4 @@ public class PageGeneratorManager {
 		return new UserCheckoutPageObject(driver);
 	}
 
-
 }

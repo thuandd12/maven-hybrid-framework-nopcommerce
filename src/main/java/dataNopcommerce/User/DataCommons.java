@@ -131,9 +131,16 @@ public class DataCommons {
 		public static final String EMAIL_ADDRESS = data.getEmail();
 		public static final String PASSWORD = "123123";
 		public static final String COMPANY_NAME = data.getCompanyName();
-		public static final String ADMIN_COMMENT = "Add new customer (gest)";
-		public static final String DATE_OF_BIRTH = "09/01/1999";
+		public static final String ADMIN_COMMENT = "Add new customer (guest)";
+		public static final String DATE_OF_BIRTH = "9/1/1999";
 		public static final String CUSTOMER_ROLES = "Guests";
+		public static final String EDIT_FIRSTNAME ="Edit " + data.getFirstName();
+		public static final String EDIT_LASTNAME ="Edit " + data.getLastName();
+		public static final String EDIT_EMAIL_ADDRESS ="edit" + data.getEmail();
+		public static final String EDIT_COMPANY_NAME = "Edit " + data.getCompanyName();
+		public static final String EDIT_ADMIN_COMMENT ="Edit " + "Add new customer (guest)";
+		public static final String EDIT_DATE_OF_BIRTH = "1/9/1999";
 	}
+	
 
 }

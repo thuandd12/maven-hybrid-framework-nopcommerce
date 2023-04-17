@@ -19,6 +19,8 @@ public class AdminAddNewCustomerPageObject extends BasePage {
 		sendkeyToElement(driver, AdminAddNewCustomerPageUIs.ADMIN_COMMENT_TEXTBOX, inputValue);
 	}
 	public void selectToAttributeInCustomerRoles(WebDriver driver, String inputValue) {
+		waitForElementClickable(driver, AdminAddNewCustomerPageUIs.CUSTOMER_ROLES_DROPDOWN);
+		clickToElement(driver, AdminAddNewCustomerPageUIs.CUSTOMER_ROLES_DROPDOWN);
 		waitForElementClickable(driver, AdminAddNewCustomerPageUIs.ATTRIBUTE_IN_CUSTOMER_ROLES, inputValue);
 		clickToElement(driver, AdminAddNewCustomerPageUIs.ATTRIBUTE_IN_CUSTOMER_ROLES, inputValue);
 	}
@@ -26,6 +28,7 @@ public class AdminAddNewCustomerPageObject extends BasePage {
 		waitForElementClickable(driver, AdminAddNewCustomerPageUIs.SAVE_AND_CONTINUE_EDIT_BUTTON);
 		clickToElement(driver, AdminAddNewCustomerPageUIs.SAVE_AND_CONTINUE_EDIT_BUTTON);
 	}
+	
 
 
 }

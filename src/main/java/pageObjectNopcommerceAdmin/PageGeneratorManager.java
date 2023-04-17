@@ -25,5 +25,8 @@ public class PageGeneratorManager {
 	public static AdminAddNewCustomerPageObject getAddNewCustomerPage(WebDriver driver) {
 		return new AdminAddNewCustomerPageObject(driver);
 	}
+	public static AdminEditCustomerDetailsPageObject getEditCustomerDetailsPage(WebDriver driver) {
+		return new AdminEditCustomerDetailsPageObject(driver);
+	}
 
 }

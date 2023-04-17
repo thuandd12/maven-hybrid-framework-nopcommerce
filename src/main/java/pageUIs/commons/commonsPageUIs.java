@@ -21,4 +21,5 @@ public class commonsPageUIs {
 	public static final String ADMIN_HOME_PAGE = "xpath=//img[@class='brand-image-xl logo-xl']";
 	public static final String ADMIN_BUTTON = "xpath=//button[@id='%s']";
 	public static final String ADMIN_BUTTON_BY_CLASS = "xpath=//a[@class='%s']";
+	public static final String ADMIN_BUTTON_BY_NAME = "xpath=//button[@name='save']";
 }

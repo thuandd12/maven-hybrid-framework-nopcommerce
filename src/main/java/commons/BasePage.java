@@ -656,6 +656,14 @@ public class BasePage {
 		waitForElementClickable(driver, commonsPageUIs.ADMIN_BUTTON_BY_CLASS, inputValue);
 		clickToElement(driver, commonsPageUIs.ADMIN_BUTTON_BY_CLASS, inputValue);
 	}
+	public void clickToButtonInAdminPageByName(WebDriver driver, String inputValue) {
+		waitForElementClickable(driver, commonsPageUIs.ADMIN_BUTTON_BY_NAME, inputValue);
+		clickToElement(driver, commonsPageUIs.ADMIN_BUTTON_BY_NAME, inputValue);
+	}
+	public String getValueInTextbox(WebDriver driver,String inputValue) {
+		waitForElementVisible(driver, commonsPageUIs.TEXT_BOX, inputValue);
+		return getElementAttribute(driver, commonsPageUIs.TEXT_BOX,"value" ,inputValue);
+	}
 
 
 }
